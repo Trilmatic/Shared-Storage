@@ -20,7 +20,7 @@ onMounted(() => {
       <div class="w-full h-full flex flex-col gap-4 pt-4 pb-8">
         <header class="h-20">
           <div class="flex items-center w-full h-full">
-            <SearchInput />
+            <SearchInput v-if="false" />
           </div>
         </header>
         <div class="w-full h-full flex-1">
