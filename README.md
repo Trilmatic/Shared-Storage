@@ -32,10 +32,12 @@ npm run dev
 - generating hash ids for disks upon creation that are then used to access the disk
 - folder structure with parent / child relations
 
-## What to implement
+## Possible improvements or future implementations
 
+- refactorings like validating requests and many more
 - share function that invites users based on email
 - connect to s3 using multer and track upload progress
-- possibly some auth using passport or similar
+- disk expiration and maximum size
 - statistics of used space and file details
 - automated tests and gh pipelines
+- possibly some auth using passport or similar
