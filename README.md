@@ -35,6 +35,7 @@ npm run dev
 ## What to implement
 
 - share function that invites users based on email
-- connect to s3 bucket using multer and upload progress
+- connect to s3 using multer and track upload progress
 - possibly some auth using passport or similar
 - statistics of used space and file details
+- automated tests and gh pipelines
