@@ -1,6 +1,6 @@
-# Shared Storage
+# Storage Disk
 
-This project is a basic example of shared storage system using Node.js and Vue.js. You can create a named storage disk and then anybody with the link can access the storage and download / upload files.
+This project is a basic example of storage system using Node.js and Vue.js.
 
 ## Setup
 
@@ -17,6 +17,7 @@ Running server:
 
 ```bash
 cd server
+npm run build
 npm start
 ```
 

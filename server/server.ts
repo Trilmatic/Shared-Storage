@@ -2,16 +2,20 @@
 
 import express from "express";
 import cors from "cors";
-import multer from "multer";
-
-const upload = multer({ dest: 'storage' });
-
 import { useDatabase } from "./hooks/database.js";
 import { File, setupRelations as setupFileRelations } from "./models/file.js";
 import { Disk, setupRelations as setupDiskRelations } from "./models/disk.js";
-import { create as createDisk, createFolder, open as openDisk, upload as uploadToDisk } from "./controllers/diskController.js";
+import {
+  create as createDisk,
+  createFolder,
+  download as downloadFile,
+  open as openDisk,
+  upload as uploadToDisk,
+} from "./controllers/diskController.js";
+import { useUpload } from "./hooks/upload.js";
 
 const { sequelize, define } = useDatabase();
+const { upload } = useUpload();
 
 async function setupDB() {
   try {
@@ -36,8 +40,13 @@ async function startServer() {
 
     app.get("/api/disk/:diskHash", openDisk);
     app.post("/api/disk", createDisk);
-    app.post("/api/disk/:diskHash/files", upload.array('fileList[]', 10), uploadToDisk);
+    app.post(
+      "/api/disk/:diskHash/files",
+      upload.array("fileList[]", 10),
+      uploadToDisk
+    );
     app.post("/api/disk/:diskHash/folder", createFolder);
+    app.get("/api/disk/:diskHash/download/:fileId", downloadFile);
 
     app.listen(port, () => {
       console.log(`App listening on port ${port}`);
